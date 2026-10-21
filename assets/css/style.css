@@ -1,0 +1,172 @@
+:root {
+  --bg: #fdfdfc;
+  --fg: #1f2328;
+  --muted: #6a737d;
+  --accent: #0b6bcb;
+  --border: #e4e4e2;
+  --code-bg: #f4f4f2;
+  --measure: 44rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15171a;
+    --fg: #e3e5e8;
+    --muted: #9aa2ab;
+    --accent: #6cb4ff;
+    --border: #2c3036;
+    --code-bg: #1e2126;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 18px/1.65 Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+}
+
+.site-header, main, .site-footer {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: .5rem 1.5rem;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.site-title { font-weight: 700; font-size: 1.1rem; color: var(--fg); }
+.site-header nav { display: flex; gap: 1.1rem; font-size: .95rem; }
+.site-header nav a { color: var(--muted); }
+.site-header nav a:hover { color: var(--accent); }
+
+main { padding-top: 2rem; padding-bottom: 3rem; }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+h1, h2, h3, h4 {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.25;
+  margin: 2em 0 .6em;
+}
+h1 { font-size: 2rem; margin-top: 0; }
+h2 { font-size: 1.45rem; }
+h3 { font-size: 1.15rem; }
+
+/* Home */
+.intro { color: var(--muted); margin-bottom: 1rem; }
+.year h2 { font-size: 1rem; color: var(--muted); margin: 2rem 0 .5rem; }
+.post-list { list-style: none; padding: 0; margin: 0; }
+.post-list li {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr;
+  gap: 1rem;
+  padding: .35rem 0;
+}
+.post-list time {
+  color: var(--muted);
+  font: .9rem/1.9 ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+.post-list p { margin: .1rem 0 0; color: var(--muted); font-size: .95rem; }
+
+/* Posts */
+.post-header { margin-bottom: 2rem; }
+.post-meta { color: var(--muted); font-size: .95rem; margin: .3rem 0 0; }
+.post-content img, .post-content video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem auto .5rem;
+  border-radius: 4px;
+}
+.post-content .caption {
+  text-align: center;
+  color: var(--muted);
+  font-size: .9rem;
+  margin-top: 0;
+}
+.post-content .side-by-side {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.post-content .side-by-side img { width: 14rem; margin: 0; }
+.post-content blockquote {
+  margin: 1.5rem 0;
+  padding: 0 1rem;
+  border-left: 3px solid var(--border);
+  color: var(--muted);
+}
+.post-content table { border-collapse: collapse; margin: 1.5rem 0; }
+.post-content th, .post-content td { border: 1px solid var(--border); padding: .35rem .7rem; }
+.back { margin-top: 3rem; font-size: .95rem; }
+
+/* Math: long display equations scroll instead of overflowing on phones */
+mjx-container[display="true"] {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: .25rem 0;
+}
+
+/* Code */
+code, pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: .85em;
+}
+:not(pre) > code {
+  background: var(--code-bg);
+  padding: .1em .35em;
+  border-radius: 4px;
+}
+pre {
+  background: var(--code-bg);
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 6px;
+  line-height: 1.5;
+}
+
+/* Rouge syntax highlighting (light + dark) */
+.highlight .c, .highlight .c1, .highlight .cm, .highlight .cs { color: #6a737d; font-style: italic; }
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kr, .highlight .kt { color: #cf222e; }
+.highlight .s, .highlight .s1, .highlight .s2, .highlight .sc { color: #0a3069; }
+.highlight .m, .highlight .mi, .highlight .mf, .highlight .mh { color: #0550ae; }
+.highlight .nf, .highlight .nx { color: #8250df; }
+.highlight .nc, .highlight .nn { color: #953800; }
+.highlight .o, .highlight .ow { color: #cf222e; }
+.highlight .cp { color: #cf222e; }
+@media (prefers-color-scheme: dark) {
+  .highlight .c, .highlight .c1, .highlight .cm, .highlight .cs { color: #8b949e; }
+  .highlight .k, .highlight .kd, .highlight .kn, .highlight .kr, .highlight .kt,
+  .highlight .o, .highlight .ow, .highlight .cp { color: #ff7b72; }
+  .highlight .s, .highlight .s1, .highlight .s2, .highlight .sc { color: #a5d6ff; }
+  .highlight .m, .highlight .mi, .highlight .mf, .highlight .mh { color: #79c0ff; }
+  .highlight .nf, .highlight .nx { color: #d2a8ff; }
+  .highlight .nc, .highlight .nn { color: #ffa657; }
+}
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1.5rem;
+  padding-bottom: 2.5rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font: .9rem system-ui, -apple-system, sans-serif;
+}

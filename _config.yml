@@ -1,0 +1,38 @@
+title: Antonio's blog
+author: Antonio
+description: Notes on graphics, simulation, and systems programming.
+url: https://antoniospg.github.io
+baseurl: ""
+
+github_username: antoniospg
+
+permalink: /:year/:title/
+timezone: America/Sao_Paulo
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  math_engine: mathjax
+  syntax_highlighter: rouge
+  hard_wrap: false
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+defaults:
+  - scope:
+      type: posts
+    values:
+      layout: post
+      math: true
+  - scope:
+      path: ""
+    values:
+      layout: default
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
